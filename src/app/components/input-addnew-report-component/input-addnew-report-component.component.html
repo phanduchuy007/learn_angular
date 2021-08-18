@@ -1,0 +1,92 @@
+<div class="form-group" *ngIf="checkField()">
+  <label for="projectName" class="form-label">{{ field }}:</label>
+  <input
+    [id]="field"
+    required="true"
+    type="text"
+    class="form-control"
+    (input)="sentTextInput(field)"
+    [value]="input"
+    type="text"
+    class="form-control"
+    id="projectName"
+    required
+  />
+  <div class="invalid-feedback">Please provide a project name.</div>
+</div>
+
+<div class="form-group" *ngIf="checkProject()">
+  <label for="projectName" class="form-label">{{ field }}:</label>
+  <input
+    [(ngModel)]="_project"
+    [disabled]="check_to_disable()"
+    [id]="field"
+    required="true"
+    type="text"
+    class="form-control"
+    (input)="sentTextInput(field)"
+    [value]="input"
+    type="text"
+    class="form-control"
+    id="projectName"
+    required
+  />
+  <div class="invalid-feedback">Please provide a project name.</div>
+</div>
+
+<div class="form-group" *ngIf="check_hccProjectCode()">
+  <label for="projectName" class="form-label">{{ field }}:</label>
+  <input
+    [(ngModel)]="_hccProjectCode"
+    [disabled]="check_to_disable()"
+    [id]="field"
+    required="true"
+    type="text"
+    class="form-control"
+    (input)="sentTextInput(field)"
+    [value]="input"
+    type="text"
+    class="form-control"
+    id="projectName"
+    required
+  />
+  <div class="invalid-feedback">Please provide a project name.</div>
+</div>
+
+<div class="form-group" *ngIf="check_customerName()">
+  <label for="projectName" class="form-label">{{ field }}:</label>
+  <input
+    [(ngModel)]="_customerName"
+    [disabled]="check_to_disable()"
+    [id]="field"
+    required="true"
+    type="text"
+    class="form-control"
+    (input)="sentTextInput(field)"
+    [value]="input"
+    type="text"
+    class="form-control"
+    id="projectName"
+    required
+  />
+  <div class="invalid-feedback">Please provide a project name.</div>
+</div>
+
+<div class="form-group" *ngIf="check_totalMember()">
+  <label for="projectName" class="form-label">{{ field }}:</label>
+  <input
+    [(ngModel)]="_totalMember"
+    [disabled]="check_to_disable()"
+    [id]="field"
+    required="true"
+    type="text"
+    class="form-control"
+    (input)="sentTextInput(field)"
+    [value]="input"
+    type="text"
+    class="form-control"
+    id="projectName"
+    required
+  />
+  <div class="invalid-feedback">Please provide a project name.</div>
+</div>

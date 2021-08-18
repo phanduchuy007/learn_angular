@@ -1,0 +1,17 @@
+<div class="form-group">
+  <label for="projectName" class="form-label">{{ field }}:</label>
+  <input
+    [disabled]="check_to_disable()"
+    [id]="field"
+    required="true"
+    type="text"
+    class="form-control"
+    (input)="sentTextInput(field)"
+    [value]="input"
+    type="text"
+    class="form-control"
+    id="projectName"
+    required
+  />
+  <div class="invalid-feedback">Please provide a project name.</div>
+</div>

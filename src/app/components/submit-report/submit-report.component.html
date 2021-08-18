@@ -1,0 +1,53 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4 mb-4 text-center">Weekly Report</h1>
+
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        {{ reportName === "" ? "Select report template" : reportName }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a
+          class="dropdown-item"
+          *ngFor="let item of datasDopdowns"
+          (click)="getDataFields(item.id, item.reportName)"
+          >{{ item.reportName }}</a
+        >
+      </div>
+    </div>
+
+    <!-- form-input -->
+    <app-form-input
+      *ngIf="statusFormInput"
+      [dataFormInput]="dataFormInput"
+      [data_reportTemplateID]="data_reportTemplateID"
+    ></app-form-input>
+  </div>
+</main>
+<script>
+  (function () {
+    "use strict";
+    var forms = document.querySelectorAll(".needs-validation");
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>

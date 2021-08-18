@@ -1,0 +1,134 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4 mb-4 text-center">Report Template List</h1>
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Template List
+      </div>
+
+      <div class="card-body">
+        <div class="input-group" style="margin-bottom: 16px">
+          <div class="form-outline" style="margin-left: 83%">
+            <input
+              #search
+              type="search"
+              id="form1"
+              class="form-control"
+              placeholder="Search"
+              (input)="getSearch(search)"
+            />
+          </div>
+          <button
+            type="button"
+            class="btn btn-light"
+            style="border-radius: 10%; border: rgb(209, 207, 207) solid 1px"
+            (click)="addClick()"
+          >
+            ADD
+          </button>
+        </div>
+
+        <table class="table">
+          <thead>
+            <th>No</th>
+            <th>Project</th>
+            <th>HCC Project code</th>
+            <th>Total members of DNB</th>
+            <th (click)="sort_by_createAt()">
+              Date Submit
+              <div [ngClass]="getSortClass()"></div>
+            </th>
+            <th>Actions</th>
+            <th>History</th>
+          </thead>
+          <tfoot>
+            <th>No</th>
+            <th>Project</th>
+            <th>HCC Project code</th>
+            <th>Total members of DNB</th>
+            <th (click)="sort_by_createAt()">Date Submit</th>
+            <th>Actions</th>
+            <th>History</th>
+          </tfoot>
+          <tbody>
+            <tr
+              *ngFor="
+                let item of dataReports
+                  | paginate
+                    : {
+                        itemsPerPage: 6,
+                        currentPage: p,
+                        totalItems: totalItems
+                      };
+                let i = index
+              "
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.project }}</td>
+              <td>{{ item.hccProjectCode }}</td>
+              <td>{{ item.totalMember }}</td>
+              <td>{{ item.createAt | date: "dd/MM/yyyy" }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-warning mr-2"
+                  (click)="redirectToEditForm(item.id)"
+                >
+                  Edit
+                </button>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                ></div>
+                <button
+                  type="button"
+                  class="btn btn-danger mr-2"
+                  (click)="deleteReport(item.id)"
+                >
+                  Delete
+                </button>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                ></div>
+              </td>
+              <td style="width: 150px">
+                <button
+                  type="button"
+                  class="btn btn-info mr-2"
+                  (click)="checkClick(item.id)"
+                >
+                  Clone
+                </button>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                ></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <pagination-controls
+    (pageChange)="pageChange($event)"
+    style="text-align: center"
+  ></pagination-controls>
+</main>

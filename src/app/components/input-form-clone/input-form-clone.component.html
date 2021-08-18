@@ -1,0 +1,46 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4 mb-4 text-center">Weekly Report</h1>
+
+    <!-- form-input -->
+    <form class="needs-validation" novalidate>
+      <app-input-component
+        *ngFor="let item of dataFields"
+        [dataField]="item"
+        (dataInput)="getDataInput($event)"
+        [dataValueInput]="dataValueInput"
+      ></app-input-component>
+      <div class="row mt-4">
+        <div class="col text-center">
+          <button
+            class="btn btn-primary mr-5"
+            type="submit"
+            (click)="submitClone()"
+          >
+            SUBMIT
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+<script>
+  (function () {
+    "use strict";
+    var forms = document.querySelectorAll(".needs-validation");
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>

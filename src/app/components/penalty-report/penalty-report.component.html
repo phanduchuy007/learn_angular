@@ -1,0 +1,32 @@
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4 mb-4 text-center">Penalty Reports</h1>
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Template List
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <th>ID</th>
+            <th>Date Created</th>
+            <th>Penalty Details</th>
+          </thead>
+          <tfoot>
+            <th>ID</th>
+            <th>Date Created</th>
+            <th>Penalty Details</th>
+          </tfoot>
+          <tbody>
+            <tr *ngFor="let item of dataPenaltyReports">
+              <td>{{ item.id }}</td>
+              <td>{{ item.createAt | date: "dd/MM/yyyy" }}</td>
+              <td>{{ item.error_information }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

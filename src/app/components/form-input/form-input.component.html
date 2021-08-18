@@ -1,0 +1,47 @@
+<form class="needs-validation" novalidate>
+  <!-- select project -->
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      {{ project === "" ? "Select project" : project }}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a
+        class="dropdown-item"
+        *ngFor="let item of dataDropdownsProject"
+        (click)="getIDProject(item.id, item.projectName)"
+        >{{ item.projectName }}</a
+      >
+    </div>
+  </div>
+  <!-- select project -->
+
+  <app-input-addnew-report-component
+    *ngFor="let item of dataFields"
+    [dataField]="item"
+    (dataInput)="getDataInput($event)"
+    [dataValueInput]="dataValueInput"
+    [project]="project"
+    [hccProjectCode]="hccProjectCode"
+    [customerName]="customerName"
+    [totalMember]="totalMember"
+  ></app-input-addnew-report-component>
+
+  <div class="row mt-4">
+    <div class="col text-center">
+      <button
+        class="btn btn-primary mr-5"
+        type="submit"
+        (click)="addNewReport()"
+      >
+        Submit Report
+      </button>
+    </div>
+  </div>
+</form>
